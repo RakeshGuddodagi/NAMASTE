@@ -1,3 +1,69 @@
-#heading{
-    color: red;
+.header{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
 }
+
+.logo{
+    width: 100px;;
+}
+
+.nav-items > ul{
+    display: flex;
+    list-style-type: none;
+    font-size: 20px;
+
+}
+ .nav-items > ul > li{
+    padding: 10px;
+    margin: 10px;
+ }
+
+ .res-card{
+    width: 400px;
+    
+    padding: 10px;
+    justify-content: space-between;
+    margin: 7px;
+   
+ }
+ .res-card:hover{
+    cursor: pointer;
+    border: 1px solid black;
+
+ }
+ 
+ .search{
+    padding: 10px;
+    font-size: 30px;
+ }
+
+ .veg-biriyani{
+    width:100%;
+
+ }
+
+ .res-container{
+    display: flex;
+    flex-wrap: wrap;
+    
+ }
+
+ h4{
+    padding-left: 10px;
+ }
+
+ .searchbar{
+    width: 500px;
+    height: 50px;
+    border-radius: 10px;
+   margin-left: 200px;
+ }
+
+ .food-selector{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+ }
+
+ 
