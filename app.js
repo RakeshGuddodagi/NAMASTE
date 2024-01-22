@@ -7,15 +7,14 @@ const Header = ()=>{
             <div className="logo-container">
                 <img className="logo" src="https://static.vecteezy.com/system/resources/previews/002/285/943/original/food-service-logo-design-template-free-vector.jpg"/>
                 
-             </div>
+            </div>
             <div className="nav-items">
                 <ul>
-                    <li>Home</li>
-                    <li>About-Us</li>
-                    <li>Contact-Us</li>
-                    <li>Cart</li>
+                  <li>Home</li>
+                  <li>About-Us</li>
+                  <li>Contact-Us</li>
+                  <li>Cart</li>
                 </ul>
-
             </div>
 
         </div>
@@ -29,11 +28,11 @@ const RestaurantCard = (props) => {
         <div className="res-card" style={{backgroundColor:"#f0f0f0"}}>
             <img className="veg-biriyani" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + 
             resData.info.cloudinaryImageId}></img>
-            <h4>{resData.info.name}</h4>
-            <h4>{resData.info.locality}</h4>
-            <h4>{resData.info.cuisines.join(",")}</h4>
-            <h4>{resData.info.costForTwo}</h4>
-            <h4>{resData.info.sla.deliveryTime} minutes</h4>
+            <h4>Restaurant:{resData.info.name}</h4>
+            <h4>Location:{resData.info.locality}</h4>
+            <h4>cuisines:{resData.info.cuisines.join(",")}</h4>
+            <h4>Prize:{resData.info.costForTwo}</h4>
+            <h4>deliveryTime:{resData.info.sla.deliveryTime} minutes</h4>
         </div>
         
     )
@@ -667,23 +666,23 @@ const restList = [
       "Desserts",
       "American",
       "Asian",
-    //   "Beverages",
-    //   "Biryani",
-    //   "Chinese",
-    //   "European",
-    //   "Grill",
-    //   "Hyderabadi",
-    //   "Indian",
-    //   "Italian",
-    //   "Kebabs",
-    //   "Lucknowi",
-    //   "Mediterranean",
-    //   "Mexican",
-    //   "Mughlai",
-    //   "Oriental",
-    //   "Pastas",
-    //   "Punjabi",
-    //   "Raja"
+      "Beverages",
+      "Biryani",
+      "Chinese",
+      "European",
+      "Grill",
+      "Hyderabadi",
+      "Indian",
+      "Italian",
+      "Kebabs",
+      "Lucknowi",
+      "Mediterranean",
+      "Mexican",
+      "Mughlai",
+      "Oriental",
+      "Pastas",
+      "Punjabi",
+      "Raja"
     ],
     "avgRating": 4.4,
     "parentId": "4317",
@@ -1645,7 +1644,9 @@ const restList = [
 const Body = () =>{
     return (
         <div className="body">
-            <div className="search">Search:</div>
+            <label className="search" style={{Color:"red", fontSize:"50px"}}>Search:
+              <input className="searchbar" type="text" placeholder="Select your favourite Restaurant"/>
+            </label>
             <div className="res-container" >
                {restList.map((restaurant)=>(
                 <RestaurantCard key={restaurant.info.id} resData ={restaurant}/>
