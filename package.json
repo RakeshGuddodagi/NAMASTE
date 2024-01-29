@@ -2,7 +2,6 @@
   "name": "namaste",
   "version": "1.0.0",
   "description": "this is namaste react by Praveen ghali",
-   
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
@@ -14,16 +13,16 @@
   ],
   "author": "PRAVEEN",
   "license": "ISC",
-  
   "devDependencies": {
     "parcel": "^2.11.0",
     "process": "^0.11.10"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.3"
   },
-  "browserslist":[
+  "browserslist": [
     "last 2 version"
   ]
 }
