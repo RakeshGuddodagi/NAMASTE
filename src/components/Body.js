@@ -1,6 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 
@@ -20,6 +22,18 @@ const Body = () =>{
         setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);    //updating new data
       
       };
+
+      const onlineStatus = useOnlineStatus()
+      if(onlineStatus === false)
+        return(
+            <div>
+              <h1>Looks you are in OFFLINE!!</h1>
+              <h2>Please check internet connection</h2>
+            </div>
+            
+          );
+
+
   return listOfRestaurants.length === 0 ?<Shimmer/> : (    // here === 0 because API till not responded yet .
     <div className="body">                                 {/*It is called " ternary conditional rendering"*/}
         <div className="filter">
@@ -45,7 +59,9 @@ const Body = () =>{
         </div>
         <div className ="res-container" >
            {listOfRestaurants?.map((restaurant)=>(
-            <RestaurantCard key={restaurant.info.id} resData = {restaurant}/>
+           <Link key={restaurant.info.id}
+            to={"/restaurant/"+restaurant.info.id}>
+              <RestaurantCard  resData = {restaurant}/></Link> 
            ))};
            
         </div>
