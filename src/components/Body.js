@@ -9,8 +9,8 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () =>{
   const [listOfRestaurants, setListOfRestaurants] = useState([]);  //Hooks can only be called inside react function component
   
-  const [searchText ,setSearchText] = useState("Search Your Favourite restaurants ");
-  console.log("body rendered");
+  const [searchText ,setSearchText] = useState(" ");
+  console.log("body rendered", listOfRestaurants);
   
   
   useEffect(()=>{fetchData()}, []); // it having two handler i.e callback function and Dependency array.Fetching data from "API"
@@ -36,13 +36,14 @@ const Body = () =>{
 
   return listOfRestaurants.length === 0 ?<Shimmer/> : (    // here === 0 because API till not responded yet .
     <div className="body">                                 {/*It is called " ternary conditional rendering"*/}
-        <div className="filter">
-          <div className="search">
-            <input type="text" className="search-box" value={searchText} 
+        <div className="filter flex items-center">
+          <div className=" m-4 p">
+            <input type="text" className="border border-solid border-black w-60 rounded-lg" value={searchText} 
               onChange={(e)=>{
               setSearchText(e.target.value);
             }}/>
-            <button onClick={()=>{
+            <button className=" px-4 py-1 bg-slate-300 m-4 rounded-lg border border-solid border-black"
+              onClick={()=>{
               console.log(searchText);
               const filteredList =listOfRestaurants.filter((res)=>{
                 res.data.cards.card.card.gridElements.infoWithStyle.restaurants.name.includes(searchText)
@@ -51,13 +52,17 @@ const Body = () =>{
               
             }}>Search</button>
           </div>
-          <button className="filter-btn" onClick={()=>{
-                const filteredList = listOfRestaurants?.filter(
-                (res) => res.info.avgRating > 4.2);
-                setListOfRestaurants(filteredList)}}>Top rated restaurant
-          </button>
+          <div className="p-4 m-2 flex items-center">
+            <button className="filter-btn px-4 py-2 bg-gray-300 rounded-lg border border-solid border-black" 
+                  onClick={()=>{
+                  const filteredList = listOfRestaurants?.filter(
+                  (res) => res.info.avgRating > 4.2);
+                  setListOfRestaurants(filteredList)}}>Top rated restaurant
+            </button>
+          </div>
+          
         </div>
-        <div className ="res-container" >
+        <div className ="res-container flex flex-wrap" >
            {listOfRestaurants?.map((restaurant)=>(
            <Link key={restaurant.info.id}
             to={"/restaurant/"+restaurant.info.id}>
